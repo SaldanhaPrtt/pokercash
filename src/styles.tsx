@@ -20,6 +20,9 @@ const RowItem = styled.div`
   width: 200px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
+  gap: 20px;
+  align-items: center;
 `;
 
 const RowTitle = styled.div`
