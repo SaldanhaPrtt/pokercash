@@ -55,6 +55,10 @@ function App() {
 		});
 	}
 
+	function calculateValues() {
+		// minCashFlow(players)
+	}
+
 	var N = players.length;
 	function getMin(arr: number[]) {
 		var minInd = 0;
@@ -120,6 +124,7 @@ function App() {
 					</RowItem>
 				))}
 			</InnerContainer>
+			<Button onClick={() => calculateValues()}>Calcular</Button>
 		</Container>
 	);
 }
