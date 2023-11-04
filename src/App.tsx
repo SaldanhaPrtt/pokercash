@@ -11,8 +11,17 @@ type Player = {
 	dinheiroDevido?: number
 }
 
+type PayOffs = {
+	owns: string,
+	ownsId: number,
+	owned: string,
+	ownedId: number,
+	value: number
+}
 function App() {
 	const [players, setPlayers] = useState<Player[]>([]);
+	const [payOffs, setPayOffs] = useState<PayOffs[]>([]);
+	const [calculated, setCalculated] = useState<boolean>();
 
 	const handleAddPlayer = () => {
 		setPlayers([...players, { id: players.length }]);
