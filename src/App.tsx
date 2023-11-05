@@ -8,7 +8,6 @@ type Player = {
 	name?: string,
 	buyIn?: number,
 	cashOut?: number,
-	dinheiroDevido?: number
 }
 
 type PayOffs = {
@@ -65,7 +64,37 @@ function App() {
 	}
 
 	function calculateValues() {
-
+		let transactions: any = [];
+		players.forEach((player) => {
+			if(player && player.buyIn && player.cashOut) {
+			let transaction = {
+				playerId: player.id,
+				playerName: player.name,
+				amount: player.cashOut - player.buyIn as number,
+			};
+			transactions.push(transaction)
+		}
+		})
+	
+		// Find players who owe money and players who are owed money
+		const debtors: string[] = transactions.filter(
+			(player: any) => player.amount < 0
+		);
+		const creditors: string[] = transactions.filter(
+			(player: any) => player.amount > 0
+		);
+	
+		// Settle the debts
+		debtors.forEach((debtor: any) => {
+			creditors.forEach((creditor: any) => {
+				if (creditor.amount > 0) {
+					const payment = Math.min(Math.abs(debtor.amount), creditor.amount);
+					debtor.amount += payment;
+					creditor.amount -= payment;
+					console.log(`${debtor.playerName} pays ${creditor.playerName}: $${payment}`);
+				}
+			});
+		});
 	}
 
 
