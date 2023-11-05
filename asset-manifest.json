@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/pokercash/static/css/main.073c9b0a.css",
-    "main.js": "/pokercash/static/js/main.ed9d236b.js",
+    "main.css": "/pokercash/static/css/main.88404e20.css",
+    "main.js": "/pokercash/static/js/main.8794c0f9.js",
     "static/js/787.e04c9887.chunk.js": "/pokercash/static/js/787.e04c9887.chunk.js",
-    "static/media/logo.svg": "/pokercash/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/pokercash/index.html",
-    "main.073c9b0a.css.map": "/pokercash/static/css/main.073c9b0a.css.map",
-    "main.ed9d236b.js.map": "/pokercash/static/js/main.ed9d236b.js.map",
+    "main.88404e20.css.map": "/pokercash/static/css/main.88404e20.css.map",
+    "main.8794c0f9.js.map": "/pokercash/static/js/main.8794c0f9.js.map",
     "787.e04c9887.chunk.js.map": "/pokercash/static/js/787.e04c9887.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.ed9d236b.js"
+    "static/css/main.88404e20.css",
+    "static/js/main.8794c0f9.js"
   ]
 }
