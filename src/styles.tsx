@@ -26,7 +26,7 @@ const RowItem = styled.div`
 `;
 
 const RowTitle = styled.div`
-  width: 100px;
+  width: 160px;
   text-align: center;
 `;
   
@@ -48,4 +48,12 @@ const PlayerNameInput = styled.input`
   margin: 0 auto;
 `;
 
-export { Container, InnerContainer, PlayerCashInput, PlayerNameInput, RowItem, RowTitle };
+const PaymentContainer = styled.div`
+  width: 500px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+`;
+
+export { Container, InnerContainer, PlayerCashInput, PlayerNameInput, RowItem, RowTitle, PaymentContainer };

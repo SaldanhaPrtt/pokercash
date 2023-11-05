@@ -1,4 +1,4 @@
-import { Container, InnerContainer, PlayerCashInput, RowItem, RowTitle, PlayerNameInput } from './styles';
+import { Container, InnerContainer, PaymentContainer, PlayerCashInput, RowItem, RowTitle, PlayerNameInput } from './styles';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -66,16 +66,16 @@ function App() {
 	function calculateValues() {
 		let transactions: any = [];
 		players.forEach((player) => {
-			if(player && player.buyIn && player.cashOut) {
-			let transaction = {
-				playerId: player.id,
-				playerName: player.name,
-				amount: player.cashOut - player.buyIn as number,
-			};
-			transactions.push(transaction)
-		}
+			if (player && player.buyIn && player.cashOut) {
+				let transaction = {
+					playerId: player.id,
+					playerName: player.name,
+					amount: player.cashOut - player.buyIn as number,
+				};
+				transactions.push(transaction)
+			}
 		})
-	
+
 		// Find players who owe money and players who are owed money
 		const debtors: string[] = transactions.filter(
 			(player: any) => player.amount < 0
@@ -83,8 +83,9 @@ function App() {
 		const creditors: string[] = transactions.filter(
 			(player: any) => player.amount > 0
 		);
-	
+
 		// Settle the debts
+		const payOffs: any = [];
 		debtors.forEach((debtor: any) => {
 			creditors.forEach((creditor: any) => {
 				if (creditor.amount > 0) {
@@ -92,6 +93,14 @@ function App() {
 					debtor.amount += payment;
 					creditor.amount -= payment;
 					console.log(`${debtor.playerName} pays ${creditor.playerName}: $${payment}`);
+					payOffs.push({
+						owns: debtor.playerName,
+						ownsId: debtor.playerId,
+						owned: creditor.playerName,
+						ownedId: creditor.playerId,
+						value: payment
+					});
+					setPayOffs(payOffs);
 				}
 			});
 		});
@@ -127,6 +136,19 @@ function App() {
 				))}
 			</InnerContainer>
 			<Button onClick={() => calculateValues()}>Calcular</Button>
+			<PaymentContainer>
+				{payOffs && payOffs.map((payOff, index) => (
+					<>
+						{payOff.value > 0 && (
+							<RowItem key={index}>
+								<RowTitle>{payOff.owns}</RowTitle>
+								<RowTitle>{payOff.value}</RowTitle>
+								<RowTitle>{payOff.owned}</RowTitle>
+							</RowItem>
+						)}
+					</>
+				))}
+			</PaymentContainer>
 		</Container>
 	);
 }
